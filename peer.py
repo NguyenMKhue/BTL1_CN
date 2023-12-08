@@ -103,7 +103,7 @@ class PeerWorker:
         upload_socket.close()
 
 
-
+ 
 
     #this is where client receive the files
     def p2p_get_request(self, title, peer_host, peer_upload_port,owner):
@@ -131,11 +131,14 @@ class PeerWorker:
                         done=True
                     else:
                         file_b+=data
-                file.write(file_b)
+
+                if(file_b==b""):
+                    file.write(data[:-7])
+                else: file.write(file_b)
                 file.close()
-        keys = ['File Title', 'Owner']
-        entry = [title, owner]
-        self.dict_list_of_rfcs.insert(0,dict(zip(keys,entry)))
+            keys = ['File Title', 'Owner']
+            entry = [title, owner]
+            self.dict_list_of_rfcs.insert(0,dict(zip(keys,entry)))
         s.close()
 
     def p2p_request_message(self, title):

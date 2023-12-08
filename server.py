@@ -66,6 +66,7 @@ class P2PServer:
         print('Got connection from Client: ', addr)
         data = pickle.loads(conn.recv(1024))
         my_port = data[1]
+        print("Client's receive port:",my_port)
         username = data[0]
         while True:
             try:

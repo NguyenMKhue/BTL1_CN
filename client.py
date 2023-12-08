@@ -25,7 +25,7 @@ class Client:
             if(server_data.decode('utf-8')!="Failed."):
                 self.username=username
                 break
-            self.s.close()
+            else: self.s.close()
         data = pickle.dumps([self.username,self.upload_port_num])
         self.s.send(data)
 
@@ -131,7 +131,7 @@ class Client:
                 file.write(file_b)
                 file.close()
         s.close()
-
+ 
     def p2p_request_message(self, title):
         OS = platform.platform()
         message = f"GET FILE {title} HCMUT_CN \n"\
