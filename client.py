@@ -30,7 +30,7 @@ class Client:
         self.s.send(data)
 
     def get_user_input(self):
-        user_input = input("> Enter ADD, LIST, LOOKUP, GET, or EXIT:  ")
+        user_input = input("> Enter ADD, GET, or EXIT:  ")
         if user_input == "EXIT":
             data = pickle.dumps("EXIT")
             self.s.send(data)
